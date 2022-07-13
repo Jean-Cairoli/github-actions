@@ -1,9 +1,6 @@
-name: Actions Workflow
+name: Context
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
   functions:
