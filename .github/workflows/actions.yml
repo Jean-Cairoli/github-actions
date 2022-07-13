@@ -1,6 +1,6 @@
 name: Actions Workflow
 
-on: [push]
+on: [push, pull_request]
 # note : uses: actions/hello-world-javascript-action@v1 reference with commits or branches
 jobs:
   run-gitgub-actions:
