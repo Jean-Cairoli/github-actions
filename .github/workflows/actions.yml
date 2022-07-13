@@ -18,19 +18,29 @@ on:
   # pull_request:
   #   types: [closed, assigned, opened, reopened]
 jobs:
+  functions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump
+        run: |
+          echo ${{ contains('hello', '11')}}
+          echo ${{ startsWith('hello', 'he')}}
+          echo ${{ endsWith('hello', 'lo')}}
+          echo ${{ formar('hello {0} {1} {2}', 'World', '!', '!')}}
+
   run-gitgub-actions:
     runs-on: ubuntu-latest
     steps:
       - name: payload
         run: echo ${{ github.event.client_payload }}
-      - name: List Files
-        run: |
-          pwd
-          ls -a
-          echo $GITGUB_SHA
-          echo $GITGUB_REPOSITORY
-          echo $GITGUB_WORKSPACE
-          echo "${github.token}"
+      # - name: List Files
+      #   run: |
+      #     pwd
+      #     ls -a
+      #     echo $GITGUB_SHA
+      #     echo $GITGUB_REPOSITORY
+      #     echo $GITGUB_WORKSPACE
+      #     echo "${github.token}"
       - name: Checkout
         uses: actions/checkout@v1
       - name: List Files After Checkout
