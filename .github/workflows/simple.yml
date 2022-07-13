@@ -1,3 +1,5 @@
+# notes: failure() continue-on-erros:true always()
+
 # name: Shell Commands
 
 # on: [pull_request]
