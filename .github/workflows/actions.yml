@@ -1,56 +1,56 @@
-#  notes :
-# 1 uses: actions/hello-world-javascript-action@v1 reference with commits or branches
-# 2 filtering workflos by branchs,tags & paths partenes -'feature/* or **' matches features/featA & features/feat/a
-# 3 dispatch
+# #  notes :
+# # 1 uses: actions/hello-world-javascript-action@v1 reference with commits or branches
+# # 2 filtering workflos by branchs,tags & paths partenes -'feature/* or **' matches features/featA & features/feat/a
+# # 3 dispatch
 
-name: Actions Workflow
+# name: Actions Workflow
 
-on:
-  push:
-    branches:
-      - main
-      #- '!features/feat' ignores features
-  # repository_dispatch: == 3
-  #   types: [build]
-  # # schedule:
-  # #   - cron: '0/5 * * * *'
-  # #   - cron: '0/6 * * * *'
-  # pull_request:
-  #   types: [closed, assigned, opened, reopened]
-jobs:
-  functions:
-    runs-on: ubuntu-latest
-    steps:
-      - name: dump
-        run: |
-          echo ${{ contains('hello', '11')}}
-          echo ${{ startsWith('hello', 'he')}}
-          echo ${{ endsWith('hello', 'lo')}}
-          echo ${{ formar('hello {0} {1} {2}', 'World', '!', '!')}}
+# on:
+#   push:
+#     branches:
+#       - main
+#       #- '!features/feat' ignores features
+#   # repository_dispatch: == 3
+#   #   types: [build]
+#   # # schedule:
+#   # #   - cron: '0/5 * * * *'
+#   # #   - cron: '0/6 * * * *'
+#   # pull_request:
+#   #   types: [closed, assigned, opened, reopened]
+# jobs:
+#   functions:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: dump
+#         run: |
+#           echo ${{ contains('hello', '11')}}
+#           echo ${{ startsWith('hello', 'he')}}
+#           echo ${{ endsWith('hello', 'lo')}}
+#           echo ${{ formar('hello {0} {1} {2}', 'World', '!', '!')}}
 
-  run-gitgub-actions:
-    runs-on: ubuntu-latest
-    steps:
-      - name: payload
-        run: echo ${{ github.event.client_payload }}
-      # - name: List Files
-      #   run: |
-      #     pwd
-      #     ls -a
-      #     echo $GITGUB_SHA
-      #     echo $GITGUB_REPOSITORY
-      #     echo $GITGUB_WORKSPACE
-      #     echo "${github.token}"
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: List Files After Checkout
-        run: |
-          pwd
-          ls -a
-      - name: Simple JS Action
-        id: greet
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: Jean
-      - name: Log Greeting Time
-        run: echo "${{ steps.greet.outputs.time }}"
+#   run-gitgub-actions:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: payload
+#         run: echo ${{ github.event.client_payload }}
+#       # - name: List Files
+#       #   run: |
+#       #     pwd
+#       #     ls -a
+#       #     echo $GITGUB_SHA
+#       #     echo $GITGUB_REPOSITORY
+#       #     echo $GITGUB_WORKSPACE
+#       #     echo "${github.token}"
+#       - name: Checkout
+#         uses: actions/checkout@v1
+#       - name: List Files After Checkout
+#         run: |
+#           pwd
+#           ls -a
+#       - name: Simple JS Action
+#         id: greet
+#         uses: actions/hello-world-javascript-action@v1
+#         with:
+#           who-to-greet: Jean
+#       - name: Log Greeting Time
+#         run: echo "${{ steps.greet.outputs.time }}"

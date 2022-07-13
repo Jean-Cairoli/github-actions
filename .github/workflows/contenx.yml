@@ -1,0 +1,17 @@
+name: Actions Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  functions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump
+        run: |
+          echo ${{ contains('hello', '11')}}
+          echo ${{ startsWith('hello', 'he')}}
+          echo ${{ endsWith('hello', 'lo')}}
+          echo ${{ formar('hello {0} {1} {2}', 'World', '!', '!')}}
