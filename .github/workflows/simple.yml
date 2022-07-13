@@ -12,3 +12,8 @@ jobs:
         run: |
           node -v
           npm -v
+      - name: pyhon Command
+        run: |
+          import platfrom
+          print(platfrom.processor())
+        shell: pyhon
