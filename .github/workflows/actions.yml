@@ -1,11 +1,28 @@
+#  notes :
+# 1 uses: actions/hello-world-javascript-action@v1 reference with commits or branches
+# 2 filtering workflos by branchs,tags & paths partenes -'feature/* or **' matches features/featA & features/feat/a
+# 3 dispatch
+
 name: Actions Workflow
 
-on: [push, pull_request]
-# note : uses: actions/hello-world-javascript-action@v1 reference with commits or branches
+on:
+  push:
+    branches:
+      - main
+      #- '!features/feat' ignores features
+  # repository_dispatch: == 3
+  #   types: [build]
+  # # schedule:
+  # #   - cron: '0/5 * * * *'
+  # #   - cron: '0/6 * * * *'
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
 jobs:
   run-gitgub-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: payload
+        run: echo ${{ github.event.client_payload }}
       - name: List Files
         run: |
           pwd
@@ -13,7 +30,7 @@ jobs:
           echo $GITGUB_SHA
           echo $GITGUB_REPOSITORY
           echo $GITGUB_WORKSPACE
-          echo "${{ github.token }}"
+          echo "${github.token}"
       - name: Checkout
         uses: actions/checkout@v1
       - name: List Files After Checkout
